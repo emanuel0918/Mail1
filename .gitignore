@@ -1,5 +1,9 @@
 /target
 target/*
+DemoApplication/target/*
+*pom.properties*
 *.class
 *.jar
+*.jar*
+*.lst
 *.json
