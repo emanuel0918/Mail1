@@ -57,26 +57,33 @@
             <artifactId>google-oauth-client-jetty</artifactId>
             <version>1.33.0</version>
         </dependency>
-<dependency>
+        <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-gmail</artifactId>
             <version>v1-rev20210614-1.31.0</version>
-</dependency>
-
-
-        <!-- JavaMail API -->
+        </dependency>
         <dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
-            <version>1.6.2</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20211205</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.example.gmailbot.GmailBotApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
