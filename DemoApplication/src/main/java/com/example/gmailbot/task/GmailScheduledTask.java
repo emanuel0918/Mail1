@@ -32,7 +32,7 @@ public class GmailScheduledTask {
             // Log the token
             String accessTokenJson = tokenService.getAccessToken();
             JSONObject jsonObject = new JSONObject(accessTokenJson);
-            String accessToken = jsonObject.getString("accessToken");
+            String accessToken = jsonObject.getString("access_token");
 
             // Fetch and log the email snippets
             List<String> messageIds = gmailService.listMessages(accessToken);
