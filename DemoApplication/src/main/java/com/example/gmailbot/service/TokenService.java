@@ -17,7 +17,7 @@ public class TokenService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("${google.url}")
+    @Value("${google.token.url}")
     private String url;
 
     @Value("${google.refresh.token}")
