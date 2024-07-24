@@ -1,30 +1,22 @@
-
 FROM openjdk:8-jre-alpine
-#FROM openjdk:8u212-jre-alpine3.9
-#Version  Java ARM v7
-#FROM alpine:latest@sha256:ec299a7ba3c670e38642b0b62a0c779d84b249a3c889757e2b6f841433b4c6fe
 
+# Create directories
+RUN mkdir -p /opt/app /opt/app/images
 
+# Copy the JAR file
+COPY target/DemoApplication-0.0.1-SNAPSHOT.jar /opt/app/DemoApplication.jar
 
-# Bash Dependency
-RUN apk update
-RUN apk add --no-cache openjdk8-jre
+# Copy credentials.json
+COPY src/main/resources/credentials.json /opt/app/credentials.json
 
-
-RUN mkdir -p /opt/app
-
-RUN mkdir -p /opt/app/images
-
-# 2.1 - Wrapper
-COPY "target/DemoApplication*.jar" /opt/app/DemoApplication.jar
-COPY "target/lib/" /opt/app/
-# 3 - Workdir
+# Set the working directory
 WORKDIR /opt/app
 
-# Expose
-EXPOSE 9091
+# Expose the port
+EXPOSE 8080
 
-# Volumen
+# Define the volume
 VOLUME ["/opt/app/"]
 
-CMD [ "java", "-jar", "DemoApplication.jar" ]
+# Run the application
+CMD ["java", "-jar", "DemoApplication.jar"]
