@@ -2,6 +2,7 @@ package com.example.gmailbot.task;
 
 import com.example.gmailbot.service.GmailService;
 import com.example.gmailbot.service.TokenService;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,9 @@ public class GmailScheduledTask {
         System.out.println("holaa");
         try {
             // Log the token
-            String accessToken = tokenService.getAccessToken();
+            String accessTokenJson = tokenService.getAccessToken();
+            JSONObject jsonObject = new JSONObject(accessTokenJson);
+            String accessToken = jsonObject.getString("accessToken");
 
             // Fetch and log the email snippets
             List<String> messageIds = gmailService.listMessages(accessToken);
